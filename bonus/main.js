@@ -75,6 +75,22 @@ $(function(){
         $('.nav > i:last-child').addClass("last");
     }
 
-
     generateCircles();
+
+    //Event listener per click sui pallini del carousel
+    $('.nav > i').click(function () { 
+        //rimuovo classe active dal pallino che lo ha attualmente
+        $('.nav').find('.active').removeClass('active');
+        //metto la classe active al pallino cliccato
+        $(this).addClass('active');
+        //posizione del pallino cliccato
+        var posizione = $('.nav > i').index(this);
+        posizione++;
+        var imageToSelect = '.images > img:nth-child(' + posizione + ')';
+        //rimuovo classe active all'immagine che la ha attualmente
+        $('.images').find('.active').removeClass('active');
+        //aggiungo la classe active all'immagine da selezionare
+        $(imageToSelect).addClass('active');
+    });
+    
 });
