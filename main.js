@@ -58,6 +58,9 @@ $(function(){
             case 39: //freccia destra
                 showNextImage();
                 break;
+            default:
+                return; //se ho premuto un altro tasto esco senza far nulla
         }
+        e.preventDefault(); // evita il comportamento di default dei tasti
     });
 });
