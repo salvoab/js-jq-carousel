@@ -1,6 +1,8 @@
 $(function(){
     // Event Listener del click sul div di classe next
-    $('.next').click(function () { 
+    $('.next').click(showNextImage);
+
+    function showNextImage() { 
         var activeImage = $('.images').find('.active');
         activeImage.removeClass('active');
         //Se l'attuale immagine attiva è l'ultima allora aggiungo la classe active al primo
@@ -20,10 +22,12 @@ $(function(){
         } else{
             activeCircle.next().addClass('active');
         }
-    });
+    }
 
     // Event Listener del click sul div di classe prev
-    $('.prev').click(function () { 
+    $('.prev').click(showPrevImage);
+
+    function showPrevImage() { 
         var activeImage = $('.images').find('.active');
         activeImage.removeClass('active');
         //Se l'attuale immagine attiva è la prima allora aggiungo la classe active all'ultima
@@ -42,6 +46,18 @@ $(function(){
             $('.last').addClass('active');
         } else{
             activeCircle.prev().addClass('active');
+        }
+    }
+
+    // Event Listener per tastiera
+    $(document).keydown(function (e) { 
+        switch(e.which){
+            case 37: // freccia sinistra
+                showPrevImage();
+                break;
+            case 39: //freccia destra
+                showNextImage();
+                break;
         }
     });
 });
